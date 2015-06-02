@@ -256,7 +256,9 @@ class W3_DbCache extends W3_DbProcessor {
                 case 'memcached':
                     $engineConfig = array(
                         'servers' => $this->_config->get_array('dbcache.memcached.servers'),
-                        'persistant' => $this->_config->get_boolean('dbcache.memcached.persistant')
+                        'persistant' => $this->_config->get_boolean('dbcache.memcached.persistant'),
+                        'user' => $this->_config->get_boolean('dbcache.memcached.user'),
+                        'pass' => $this->_config->get_boolean('dbcache.memcached.pass')
                     );
                     break;
 

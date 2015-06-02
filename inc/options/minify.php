@@ -31,7 +31,7 @@
     </p>
 </form>
 
-<form id="minify_form" action="admin.php?page=<?php echo $this->_page; ?>" method="post">
+<form autocomplete="off" id="minify_form" action="admin.php?page=<?php echo $this->_page; ?>" method="post">
     <div class="metabox-holder">
         <?php echo $this->postbox_header(__('General', 'w3-total-cache'), '', 'general'); ?>
         <table class="form-table">
@@ -442,6 +442,12 @@
                     <input id="memcached_servers" type="text"
                         <?php $this->sealing_disabled('minify') ?>
                         name="minify.memcached.servers" value="<?php echo esc_attr(implode(',', $this->_config->get_array('minify.memcached.servers'))); ?>" size="100" />
+                    <input id="memcached_user" type="text" placeholder="user (optional)" 
+                        <?php $this->sealing_disabled('minify') ?> name="minify.memcached.user" autocomplete="off" value="<?php echo esc_attr($this->_config->get_string('minify.memcached.user')); ?>" size="100" />
+                    <!-- http://stackoverflow.com/questions/10938891/disable-autofill-in-chrome-without-disabling-autocomplete -->
+                    <input type="password" name="password" id="password__chrome_hack" class="hidden" autocomplete="off" style="display: none;">
+                    <input id="memcached_pass" type="password" placeholder="password (optional)"
+                        <?php $this->sealing_disabled('minify') ?> name="minify.memcached.pass" autocomplete="off" value="<?php echo esc_attr($this->_config->get_string('minify.memcached.pass')); ?>" size="100" />
                     <input id="memcached_test" class="button {nonce: '<?php echo wp_create_nonce('w3tc'); ?>'}"
                         type="button" value="<?php _e('Test', 'w3-total-cache'); ?>" />
                     <span id="memcached_test_status" class="w3tc-status w3tc-process"></span>

@@ -1310,6 +1310,8 @@ jQuery(function() {
         jQuery.post('admin.php?page=w3tc_dashboard', {
             w3tc_test_memcached: 1,
             servers: jQuery('#memcached_servers').val(),
+            user: jQuery('#memcached_user').val(),
+            pass: jQuery('#memcached_pass').val(),
             _wpnonce: jQuery(this).metadata().nonce
         }, function(data) {
             status.addClass(data.result ? 'w3tc-success' : 'w3tc-error');

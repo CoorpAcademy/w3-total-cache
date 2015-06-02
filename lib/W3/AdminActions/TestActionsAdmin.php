@@ -42,8 +42,10 @@ class W3_AdminActions_TestActionsAdmin {
         w3_require_once(W3TC_LIB_W3_DIR . '/Request.php');
 
         $servers = W3_Request::get_array('servers');
+        $user = W3_Request::get_string('user');
+        $pass = W3_Request::get_string('pass');
 
-        if ($this->is_memcache_available($servers)) {
+        if ($this->is_memcache_available($servers, $user, $pass)) {
             $result = true;
             $error = __('Test passed.', 'w3-total-cache');
         } else {
@@ -126,9 +128,11 @@ class W3_AdminActions_TestActionsAdmin {
      * Check if memcache is available
      *
      * @param array $servers
+     * @param string $user
+     * @param string $pass
      * @return boolean
      */
-    function is_memcache_available($servers) {
+    function is_memcache_available($servers, $user, $pass) {
         static $results = array();
 
         $key = md5(implode('', $servers));
@@ -136,16 +140,18 @@ class W3_AdminActions_TestActionsAdmin {
         if (!isset($results[$key])) {
             w3_require_once(W3TC_LIB_W3_DIR . '/Cache/Memcached.php');
 
-            @$memcached = new W3_Cache_Memcached(array(
+            $memcached = new W3_Cache_Memcached(array(
                 'servers' => $servers,
-                'persistant' => false
+                'persistant' => false,
+                'user'=> $user,
+                'pass'=> $pass
             ));
 
             $test_string = sprintf('test_' . md5(time()));
             $test_value = array('content' => $test_string);
             $memcached->set($test_string, $test_value, 60);
             $test_value = $memcached->get($test_string);
-            $results[$key] = ( $test_value['content'] == $test_string);
+            $results[$key] = ($test_value['content'] == $test_string);
         }
 
         return $results[$key];

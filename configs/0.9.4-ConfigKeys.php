@@ -63,9 +63,15 @@ $keys = array(
     ),
     'dbcache.memcached.servers' => array(
         'type' => 'array',
-        'default' => array(
-            '127.0.0.1:11211'
-        )
+        'default' => explode (',' , getenv('MEMCACHIER_SERVERS'))
+    ),
+    'dbcache.memcached.user' => array(
+        'type' => 'string',
+        'default' => $_ENV['MEMCACHIER_USERNAME']
+    ),
+    'dbcache.memcached.pass' => array(
+        'type' => 'string',
+        'default' => $_ENV['MEMCACHIER_PASSWORD']
     ),
     'dbcache.reject.cookie' => array(
         'type' => 'array',
@@ -127,9 +133,15 @@ $keys = array(
     ),
     'objectcache.memcached.servers' => array(
         'type' => 'array',
-        'default' => array(
-            '127.0.0.1:11211'
-        )
+        'default' => explode (',' , getenv('MEMCACHIER_SERVERS'))
+    ),
+    'objectcache.memcached.user' => array(
+        'type' => 'string',
+        'default' => $_ENV['MEMCACHIER_USERNAME']
+    ),
+    'objectcache.memcached.pass' => array(
+        'type' => 'string',
+        'default' => $_ENV['MEMCACHIER_PASSWORD']
     ),
     'objectcache.memcached.persistant' => array(
         'type' => 'boolean',
@@ -190,9 +202,15 @@ $keys = array(
     ),
     'fragmentcache.memcached.servers' => array(
         'type' => 'array',
-        'default' => array(
-            '127.0.0.1:11211'
-        )
+        'default' => explode (',' , getenv('MEMCACHIER_SERVERS'))
+    ),
+    'fragmentcache.memcached.user' => array(
+        'type' => 'string',
+        'default' => $_ENV['MEMCACHIER_USERNAME']
+    ),
+    'fragmentcache.memcached.pass' => array(
+        'type' => 'string',
+        'default' => $_ENV['MEMCACHIER_PASSWORD']
     ),
     'fragmentcache.memcached.persistant' => array(
         'type' => 'boolean',
@@ -241,9 +259,15 @@ $keys = array(
     ),
     'pgcache.memcached.servers' => array(
         'type' => 'array',
-        'default' => array(
-            '127.0.0.1:11211'
-        )
+        'default' => explode (',' , getenv('MEMCACHIER_SERVERS'))
+    ),
+    'pgcache.memcached.user' => array(
+        'type' => 'string',
+        'default' => $_ENV['MEMCACHIER_USERNAME']
+    ),
+    'pgcache.memcached.pass' => array(
+        'type' => 'string',
+        'default' => $_ENV['MEMCACHIER_PASSWORD']
     ),
     'pgcache.memcached.persistant' => array(
         'type' => 'boolean',
@@ -474,9 +498,15 @@ $keys = array(
     ),
     'minify.memcached.servers' => array(
         'type' => 'array',
-        'default' => array(
-            '127.0.0.1:11211'
-        )
+        'default' => explode (',' , getenv('MEMCACHIER_SERVERS'))
+    ),
+    'minify.memcached.user' => array(
+        'type' => 'string',
+        'default' => $_ENV['MEMCACHIER_USERNAME']
+    ),
+    'minify.memcached.pass' => array(
+        'type' => 'string',
+        'default' => $_ENV['MEMCACHIER_PASSWORD']
     ),
     'minify.memcached.persistant' => array(
         'type' => 'boolean',

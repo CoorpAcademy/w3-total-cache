@@ -547,7 +547,9 @@ class W3_Pro_FragmentCache {
                 case 'memcached':
                     $engineConfig = array(
                         'servers' => $this->_config->get_array('fragmentcache.memcached.servers'),
-                        'persistant' => $this->_config->get_boolean('fragmentcache.memcached.persistant')
+                        'persistant' => $this->_config->get_boolean('fragmentcache.memcached.persistant'),
+                        'user' => $this->_config->get_boolean('fragmentcache.memcached.user'),
+                        'pass' => $this->_config->get_boolean('fragmentcache.memcached.pass')
                     );
                     break;
 

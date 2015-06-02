@@ -19,7 +19,7 @@
     </p>
 </form>
 
-<form action="admin.php?page=<?php echo $this->_page; ?>" method="post">
+<form autocomplete="off" action="admin.php?page=<?php echo $this->_page; ?>" method="post">
     <div class="metabox-holder">
         <?php echo $this->postbox_header(__('General', 'w3-total-cache'), '', 'general'); ?>
         <table class="form-table">
@@ -247,6 +247,12 @@
                         name="pgcache.memcached.servers" 
                         <?php $this->sealing_disabled('pgcache') ?>
                         value="<?php echo esc_attr(implode(',', $this->_config->get_array('pgcache.memcached.servers'))); ?>" size="100" />
+                    <input id="memcached_user" type="text" placeholder="user (optional)" 
+                        <?php $this->sealing_disabled('pgcache') ?> name="pgcache.memcached.user" autocomplete="off" value="<?php echo esc_attr($this->_config->get_string('pgcache.memcached.user')); ?>" size="100" />
+                    <!-- http://stackoverflow.com/questions/10938891/disable-autofill-in-chrome-without-disabling-autocomplete -->
+                    <input type="password" name="password" id="password__chrome_hack" class="hidden" autocomplete="off" style="display: none;">
+                    <input id="memcached_pass" type="password" placeholder="password (optional)"
+                        <?php $this->sealing_disabled('pgcache') ?> name="pgcache.memcached.pass" autocomplete="off" value="<?php echo esc_attr($this->_config->get_string('pgcache.memcached.pass')); ?>" size="100" />
                     <input id="memcached_test" class="button {nonce: '<?php echo wp_create_nonce('w3tc'); ?>'}" 
                         <?php $this->sealing_disabled('pgcache') ?>
                         type="button" value="<?php esc_attr_e('Test', 'w3-total-cache'); ?>" />
